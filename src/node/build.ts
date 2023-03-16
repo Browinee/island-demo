@@ -3,7 +3,9 @@ import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from "./constants";
 import pluginReact from "@vitejs/plugin-react";
 import type { RollupOutput } from "rollup";
 import { join } from "path";
-import * as fs from "fs-extra";
+import fs from "fs-extra";
+import ora from "ora";
+import { pathToFileURL } from "url";
 
 export async function bundle(root: string) {
   const resolveViteConfig = (isServer: boolean): InlineConfig => ({
@@ -23,16 +25,19 @@ export async function bundle(root: string) {
       },
     },
   });
-  console.log(`Building client + server bundles...`);
-
+  const spinner = ora();
+  spinner.start("Building client + server bundles...");
   try {
     const [clientBundle, serverBundle] = await Promise.all([
       viteBuild(resolveViteConfig(false)),
       viteBuild(resolveViteConfig(true)),
     ]);
+
     return [clientBundle, serverBundle] as [RollupOutput, RollupOutput];
   } catch (e) {
     console.log(e);
+  } finally {
+    spinner.stop();
   }
 }
 export async function renderPage(
@@ -70,6 +75,7 @@ export async function renderPage(
 export async function build(root: string = process.cwd()) {
   const [clientBundle, serverBundle] = (await bundle(root)) || [];
   const serverEntryPath = join(root, ".temp", "ssr-entry.js");
-  const { render } = require(serverEntryPath);
+  const { render } = await import(pathToFileURL(serverEntryPath).toString());
+  // const { render } = require(serverEntryPath);
   await renderPage(render, root, clientBundle!);
 }
