@@ -45,7 +45,7 @@ export async function renderPage(
   root: string,
   clientBundle: RollupOutput
 ) {
-  console.log("clientBunde", clientBundle);
+  console.log("clientBundle", clientBundle);
 
   const clientChunk = clientBundle.output.find(
     (chunk: any) => chunk.type === "chunk" && chunk.isEntry
@@ -68,14 +68,16 @@ export async function renderPage(
 </html>`.trim();
   await fs.ensureDir(join(root, "build"));
   await fs.writeFile(join(root, "build/index.html"), html);
-  // await fs.remove(join(root, ".temp"));
+  await fs.remove(join(root, ".temp"));
   console.log("Finish build server");
 }
 
 export async function build(root: string = process.cwd()) {
   const [clientBundle, serverBundle] = (await bundle(root)) || [];
   const serverEntryPath = join(root, ".temp", "ssr-entry.js");
-  const { render } = await import(pathToFileURL(serverEntryPath).toString());
+  // NOTE: this file is generated when building, so we can't use static import
+  // ESM can't require file, so we need to use await import here
   // const { render } = require(serverEntryPath);
+  const { render } = await import(pathToFileURL(serverEntryPath).toString());
   await renderPage(render, root, clientBundle!);
 }
