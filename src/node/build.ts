@@ -43,14 +43,14 @@ export async function bundle(root: string) {
 export async function renderPage(
   render: () => string,
   root: string,
-  clientBundle: RollupOutput
+  clientBundle: RollupOutput,
 ) {
   console.log("clientBundle", clientBundle);
 
   const clientChunk = clientBundle.output.find(
-    (chunk: any) => chunk.type === "chunk" && chunk.isEntry
+    (chunk: any) => chunk.type === "chunk" && chunk.isEntry,
   );
-  console.log(`Rendering page in server side...`);
+  console.log("Rendering page in server side...");
   const appHtml = render();
   const html = `
 <!DOCTYPE html>

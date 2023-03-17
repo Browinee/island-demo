@@ -8,12 +8,12 @@ export const CLIENT_ENTRY_PATH = join(
   PACKAGE_ROOT,
   "src",
   "runtime",
-  "client-entry.tsx"
+  "client-entry.tsx",
 );
 
 export const SERVER_ENTRY_PATH = join(
   PACKAGE_ROOT,
   "src",
   "runtime",
-  "ssr-entry.tsx"
+  "ssr-entry.tsx",
 );

@@ -31,7 +31,7 @@ export function pluginIndexHtml(): Plugin {
             html = await server.transformIndexHtml(
               req.url,
               html,
-              req.originalUrl
+              req.originalUrl,
             );
             res.statusCode = 200;
             res.setHeader("Content-Type", "text/html");
