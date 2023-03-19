@@ -1,5 +1,6 @@
 import { App } from "./app";
 import { createRoot } from "react-dom/client";
+import siteData from "island:site-data";
 
 function renderInBrowser() {
   const containerEl = document.querySelector("#root");
@@ -8,5 +9,6 @@ function renderInBrowser() {
   }
   createRoot(containerEl).render(<App />);
 }
+console.log(siteData);
 
 renderInBrowser();
