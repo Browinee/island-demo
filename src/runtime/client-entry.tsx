@@ -1,14 +1,17 @@
-import { App } from "./app";
 import { createRoot } from "react-dom/client";
-import siteData from "island:site-data";
+import { App } from "./app";
+import { BrowserRouter } from "react-router-dom";
 
 function renderInBrowser() {
-  const containerEl = document.querySelector("#root");
+  const containerEl = document.getElementById("root");
   if (!containerEl) {
     throw new Error("#root element not found");
   }
-  createRoot(containerEl).render(<App />);
+  createRoot(containerEl).render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+  );
 }
-console.log(siteData);
 
 renderInBrowser();
