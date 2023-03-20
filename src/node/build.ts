@@ -2,7 +2,7 @@ import { InlineConfig, build as viteBuild } from "vite";
 import { CLIENT_ENTRY_PATH, SERVER_ENTRY_PATH } from "./constants";
 import pluginReact from "@vitejs/plugin-react";
 import type { RollupOutput } from "rollup";
-import { join } from "path";
+import path, { join } from "path";
 import fs from "fs-extra";
 import ora from "ora";
 import { pathToFileURL } from "url";
@@ -21,7 +21,7 @@ export async function bundle(root: string, config: SiteConfig) {
     },
     build: {
       ssr: isServer,
-      outDir: isServer ? ".temp" : "build",
+      outDir: isServer ? path.join(root, ".temp") : "build",
       rollupOptions: {
         input: isServer ? SERVER_ENTRY_PATH : CLIENT_ENTRY_PATH,
         output: {
