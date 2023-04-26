@@ -4,3 +4,7 @@ declare module "island:site-data" {
   export default siteData;
 }
 
+declare module "island:routes" {
+  import type { Route } from "node/plugin-routes";
+  export const routes: Route[];
+}
