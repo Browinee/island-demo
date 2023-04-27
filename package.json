@@ -23,6 +23,7 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@loadable/component": "^5.15.3",
     "@types/fs-extra": "^9.0.13",
+    "@types/hast": "^2.3.4",
     "@types/node": "^18.11.7",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
@@ -42,6 +43,7 @@
     "serve": "^14.0.1",
     "tsup": "^6.5.0",
     "typescript": "^4.8.4",
+    "unist-util-visit": "^4.1.2",
     "vitest": "^0.29.3"
   },
   "dependencies": {
