@@ -15,6 +15,7 @@ describe("Markdown compile cases", () => {
   test("Compile title", async () => {
     const mdContent = "# 123";
     const result = processor.processSync(mdContent);
+    // eslint-disable-next-line
     expect(result.value).toMatchInlineSnapshot('"<h1>123</h1>"');
   });
 
@@ -22,6 +23,7 @@ describe("Markdown compile cases", () => {
     const mdContent = "I am using `Island.js`";
     const result = processor.processSync(mdContent);
     expect(result.value).toMatchInlineSnapshot(
+      // eslint-disable-next-line
       '"<p>I am using <code>Island.js</code></p>"',
     );
   });
