@@ -26,9 +26,7 @@ export class RouteService {
       const fileRelativePath = normalizePath(
         path.relative(this.#scanDir, file),
       );
-      // 1. 路由路径
       const routePath = this.normalizeRoutePath(fileRelativePath);
-      // 2. 文件绝对路径
       this.#routeData.push({
         routePath,
         absolutePath: file,
@@ -45,13 +43,15 @@ export class RouteService {
     return routePath.startsWith("/") ? routePath : `/${routePath}`;
   }
 
-  generateRoutesCode() {
+  generateRoutesCode(ssr = false) {
     return `
 import React from 'react';
-import loadable from '@loadable/component';
+${ssr ? "" : 'import loadable from "@loadable/component";'}
 ${this.#routeData
   .map((route, index) => {
-    return `const Route${index} = loadable(() => import('${route.absolutePath}'));`;
+    return ssr
+      ? `import Route${index} from "${route.absolutePath}";`
+      : `const Route${index} = loadable(() => import('${route.absolutePath}'));`;
   })
   .join("\n")}
 export const routes = [
