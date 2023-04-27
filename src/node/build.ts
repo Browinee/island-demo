@@ -8,6 +8,7 @@ import ora from "ora";
 import { pathToFileURL } from "url";
 import { SiteConfig } from "shared/types";
 import { pluginConfig } from "./plugin-island/config";
+import { createVitePlugins } from "./vitePlugins";
 
 export async function bundle(root: string, config: SiteConfig) {
   const resolveViteConfig = (isServer: boolean): InlineConfig => ({
@@ -15,7 +16,7 @@ export async function bundle(root: string, config: SiteConfig) {
     root,
     // NOTE: this plugin will inject 'import React from 'react' automatically
     // to avoid React is not defined
-    plugins: [pluginReact(), pluginConfig(config)],
+    plugins: createVitePlugins(config),
     ssr: {
       noExternal: ["react-router-dom"],
     },
