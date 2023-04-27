@@ -4,14 +4,15 @@ import { pluginConfig } from "./plugin-island/config";
 import { pluginRoutes } from "./plugin-routes";
 import { SiteConfig } from "shared/types";
 import { createPluginMdx } from "./plugin-mdx";
-
+import pluginUnocss from "unocss/vite";
+import unocssOptions from "./unocssOptions";
 export function createVitePlugins(
   config: SiteConfig,
   restartServer?: () => Promise<void>,
 ) {
-  console.log("config----", config);
 
   return [
+    pluginUnocss(unocssOptions),
     pluginIndexHtml(),
     pluginReact({
       jsxRuntime: "automatic",
