@@ -6,14 +6,18 @@ import rehypePluginSlug from "rehype-slug";
 import remarkPluginMDXFrontMatter from "remark-mdx-frontmatter";
 import remarkPluginFrontmatter from "remark-frontmatter";
 import { remarkPluginToc } from "./remarkPlugins/toc";
+import { rehypePluginShiki } from "./rehypePlugins/shiki";
+import shiki from "shiki";
 
-export function pluginMdxRollup(): Plugin {
+export async function pluginMdxRollup(): Promise<Plugin> {
   return pluginMdx({
     remarkPlugins: [
       remarkPluginGFM,
       remarkPluginFrontmatter,
       [remarkPluginMDXFrontMatter, { name: "frontmatter" }],
       remarkPluginToc,
+      rehypePluginShiki,
+      { highlighter: await shiki.getHighlighter({ theme: "nord" }) },
     ],
     rehypePlugins: [
       rehypePluginSlug,

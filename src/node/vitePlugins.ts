@@ -7,7 +7,7 @@ import { createPluginMdx } from "./plugin-mdx";
 import pluginUnocss from "unocss/vite";
 import unocssOptions from "./unocssOptions";
 
-export function createVitePlugins(
+export async function createVitePlugins(
   config: SiteConfig,
   restartServer?: () => Promise<void>,
   isSSR = false,
@@ -23,6 +23,6 @@ export function createVitePlugins(
       root: config.root,
       isSSR: false,
     }),
-    createPluginMdx(),
+    await createPluginMdx(),
   ];
 }
