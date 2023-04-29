@@ -6,6 +6,7 @@ import siteData from "island:site-data";
 
 export async function initPageData(routePath: string): Promise<PageData> {
   const matched = matchRoutes(routes, routePath);
+  console.log("matched", { routes, matched, siteData });
 
   if (matched) {
     const moduleInfo = await matched[0].route.preload();

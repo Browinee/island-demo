@@ -1,5 +1,6 @@
 import { Plugin } from "vite";
 import { RouteService } from "./routeService";
+import { PageModule } from "shared/types";
 
 export interface Route {
   path: string;

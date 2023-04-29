@@ -1,5 +1,11 @@
-import { defineConfig } from "../src/node/config";
+import { defineConfig } from "../dist";
 
 export default defineConfig({
-  title: "1231sdd121ddfdsfdd233dddf2123",
+  title: "xxx",
+  themeConfig: {
+    nav: [
+      { text: "Main", link: "/" },
+      { text: "Guide", link: "/guide/" },
+    ],
+  },
 });
