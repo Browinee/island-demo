@@ -1,41 +1,38 @@
 ---
-title: "custom title"
+pageType: home
+
+hero:
+  name: Island
+  text: 基於 Vite & MDX 語法的靜態站點生成器
+  tagline: 簡單、強大、高性能的現代化 SSG 方案
+  image:
+    src: /island.png
+    alt: Island
+  actions:
+    - theme: brand
+      text: 快速開始
+      link: /zh/guide/getting-started
+    - theme: alt
+      text: GitHub 地址
+      link: https://github.com/sanyuan0704/island
+
+features:
+  - title: "Vite: 極速的開發響應速度"
+    details: 基於 Vite 構建，開發時的響應速度極快，即時的熱更新，帶給你極致的開發體驗。
+    icon: 🚀
+  - title: "MDX: Markdown & React 組件來寫內容"
+    details: MDX 是一種強大的方式來寫內容。你可以在 Markdown 中使用 React 組件。
+    icon: 📦
+  - title: "孤島架構: 更高的生產性能"
+    details: 採用 Islands 架構，意味著更少的 JavaScript 代碼、局部 hydration， 從而帶來更好的首屏性能。
+    icon: ✨
+  - title: "功能豐富: 一站式解決方案"
+    details: 對全文搜索、國際化等常見功能可以做到開箱即用。
+    icon: 🛠️
+  - title: "TypeScript: 優秀的類型支持"
+    details: 使用 TypeScript 編寫，提供了優秀的類型支持，讓你的開發更加順暢。
+    icon: 🔑
+  - title: "擴展性強: 提供多種自定義能力"
+    details: 通過其擴展機制，你可以輕鬆的擴展 Island 的主題 UI 和構建能力。
+    icon: 🎨
 ---
-
-# GFM
-
-## [Autolink](/index) literals
-
-www.example.com, https://example.com, and contact@example.com.
-
-## Footnote
-
-123
-
-A note[^1]
-
-[^1]: Big note.
-
-## Strike `through`
-
-~one~ or ~~two~~ tildes.
-
-## Table
-
-| a   | b   |   c |  d  |
-| --- | :-- | --: | :-: |
-| 1   | 2   |   3 |  4  |
-
-## Tasklist
-
-- [ ] to do
-- [x] done
-
-```ts
-import { Plugin } from "vite";
-import { pluginMdxRollup } from "./pluginMdxRollup";
-
-export async function pluginMdx(): Promise<Plugin[]> {
-  return [await pluginMdxRollup()];
-}
-```
