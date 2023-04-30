@@ -54,6 +54,7 @@ export interface Header {
 export interface PageModule {
   default: ComponentType;
   frontmatter?: FrontMatter;
+  toc?: Header[];
   [key: string]: unknown;
 }
 export interface PageData {
