@@ -20,6 +20,10 @@ export default defineConfig({
               text: "Install",
               link: "/guide/b",
             },
+            {
+              text: "Notice",
+              link: "/guide/c",
+            },
           ],
         },
       ],
