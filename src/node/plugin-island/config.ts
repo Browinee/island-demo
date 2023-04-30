@@ -2,6 +2,7 @@ import { Plugin, ViteDevServer } from "vite";
 import { SiteConfig } from "shared/types/index";
 import { join, relative } from "path";
 import { PACKAGE_ROOT } from "node/constants";
+import sirv from "sirv";
 
 const SITE_DATA_ID = "island:site-data";
 
@@ -37,6 +38,10 @@ export function pluginConfig(
           },
         },
       };
+    },
+    configureServer(server) {
+      const publicDir = join(config.root, "public");
+      server.middlewares.use(sirv(publicDir));
     },
     async handleHotUpdate(ctx) {
       const customWatchedFiles = [config.configPath];
