@@ -4,6 +4,12 @@ import { StaticRouter } from "react-router-dom/server";
 import { DataContext } from "./hooks";
 import { HelmetProvider } from "react-helmet-async";
 
+export interface RenderResult {
+  appHtml: string;
+  propsData: unknown[];
+  islandToPathMap: Record<string, string>;
+}
+
 // For ssr component render
 export async function render(pagePath: string, helmetContext: object) {
   const pageData = await initPageData(pagePath);
