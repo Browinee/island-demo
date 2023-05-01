@@ -1,0 +1,40 @@
+# 1.0.0 (2023-05-01)
+
+
+### Features
+
+* add babel-plugin-island ([107c848](https://github.com/Browinee/island-demo/commit/107c848403499f4108200648905fad2f8fbf09a3))
+* add cac to add island command ([fbc0a91](https://github.com/Browinee/island-demo/commit/fbc0a91633cd001a59ecc8be734218cffb6b1f87))
+* add config hot upload ([078188d](https://github.com/Browinee/island-demo/commit/078188de4f50aaec953a1176b7fd1a63c47188c6))
+* add content ([710d5b9](https://github.com/Browinee/island-demo/commit/710d5b9b08498330237ef692ea4220ec21959b65))
+* add footer ([4b8bf62](https://github.com/Browinee/island-demo/commit/4b8bf62b213553d965309f88fa7f19cd67d7f559))
+* add helmet ([4217594](https://github.com/Browinee/island-demo/commit/4217594069fedef33b4651198654768345c47f28))
+* add html template and hmr ([47f1956](https://github.com/Browinee/island-demo/commit/47f19564ab612cded280afba3c21951c35ee9c67))
+* add husky commitlint ([6d1290a](https://github.com/Browinee/island-demo/commit/6d1290ae2b1e7bda081a7df9dbce282c8bf06304))
+* add jsx runtime ([951f0c0](https://github.com/Browinee/island-demo/commit/951f0c0d84ccef7909f38139c0ba5a1f6598d94b))
+* add mdx hmr ([d43c065](https://github.com/Browinee/island-demo/commit/d43c06530743f31734f7485df7233bb4d5ef90e7))
+* add nav ([ed77499](https://github.com/Browinee/island-demo/commit/ed7749905420e74eb15257993f6a365f17f1e569))
+* add preview ([9dfb4b2](https://github.com/Browinee/island-demo/commit/9dfb4b2b01e8a56c8c87ebf11ab86d8ab77d5247))
+* add react-router-dom ([65100f1](https://github.com/Browinee/island-demo/commit/65100f188ef8ba46a54feb2840f84f56eb753e3e))
+* add rehype plugin preWrapper ([5fa29c1](https://github.com/Browinee/island-demo/commit/5fa29c1a64e7a0e22649a17346ef63dac05fe512))
+* add remark/rehype ([2f9df59](https://github.com/Browinee/island-demo/commit/2f9df590243408811999d56e796573b0aa79d4e0))
+* add remark/rehype ([13109aa](https://github.com/Browinee/island-demo/commit/13109aacbbe7ae7e0f889659fdd61602ddb88c9a))
+* add resolveConfig ([05cec99](https://github.com/Browinee/island-demo/commit/05cec99b4f63b63adc23f3250a807ae68f04d715))
+* add route ([17ac2db](https://github.com/Browinee/island-demo/commit/17ac2db0821330ab3fd9fab3daa6791d638a0004))
+* add sidebar ([c9b5c66](https://github.com/Browinee/island-demo/commit/c9b5c66e4fc55aa7f4259757c5f4a335882f4d54))
+* add ssg build ([a19ca45](https://github.com/Browinee/island-demo/commit/a19ca45b8e600db711d28a1abcb51f1a97e38ae9))
+* add ssg for ssr ([8fb0198](https://github.com/Browinee/island-demo/commit/8fb01980a51c293f4f56498bc98e9678a175432b))
+* add ssr build ([7f7a40f](https://github.com/Browinee/island-demo/commit/7f7a40f7f3c24b024ba350847387accbed11346e))
+* add toc ([e9b8563](https://github.com/Browinee/island-demo/commit/e9b85634c9d10dcc9529a29802b97710b82885c8))
+* add toc hmr ([e3f7fdf](https://github.com/Browinee/island-demo/commit/e3f7fdfe4b3944f0f7f5b91f9c9d43e359c24005))
+* add toc plugin ([522271d](https://github.com/Browinee/island-demo/commit/522271d0d449b3823bda1a3617a934d1603f7717))
+* add tsup ([63b5974](https://github.com/Browinee/island-demo/commit/63b5974b13f8b6806e1349fcbffd471df28cad3b))
+* add unocss ([58c3bb6](https://github.com/Browinee/island-demo/commit/58c3bb6a7a01309ba441d1a1bdb831e15eb52177))
+* add useContext to pass data ([29ad74c](https://github.com/Browinee/island-demo/commit/29ad74c8cc21f75cdce42d989d5801585bbff124))
+* add vite as devServer ([085810a](https://github.com/Browinee/island-demo/commit/085810af94f7abe4b35889dbc83be0735932b936))
+* modify build ssr path ([d23012c](https://github.com/Browinee/island-demo/commit/d23012cb70d1b19aacac07d7897dccce285f02a8))
+* remove counter ([2678321](https://github.com/Browinee/island-demo/commit/267832186fa0a107b0a35f42f05f979220d79ced))
+* use importmap to solve multi react ([a8431de](https://github.com/Browinee/island-demo/commit/a8431dec5dc8bd8f04affe9f3ab16c31b91602b8))
+
+
+

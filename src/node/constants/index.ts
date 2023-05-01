@@ -26,3 +26,4 @@ export const EXTERNALS = [
   "react-dom/client",
   "react/jsx-runtime",
 ];
+const CLIENT_OUTPUT = "build";

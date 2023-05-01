@@ -6,15 +6,13 @@ import { HelmetProvider } from "react-helmet-async";
 
 export interface RenderResult {
   appHtml: string;
-  propsData: unknown[];
+  islandProps: unknown[];
   islandToPathMap: Record<string, string>;
 }
-
 // For ssr component render
 export async function render(pagePath: string, helmetContext: object) {
   const pageData = await initPageData(pagePath);
   const { clearIslandData, data } = await import("./jsx-runtime");
-  const { islandProps, islandToPathMap } = data;
   clearIslandData();
   const appHtml = renderToString(
     <HelmetProvider context={helmetContext}>
@@ -25,6 +23,7 @@ export async function render(pagePath: string, helmetContext: object) {
       </DataContext.Provider>
     </HelmetProvider>,
   );
+  const { islandProps, islandToPathMap } = data;
   return {
     appHtml,
     islandProps,

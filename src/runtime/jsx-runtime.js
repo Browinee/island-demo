@@ -1,6 +1,5 @@
 import * as jsxRuntime from "react/jsx-runtime";
 
-
 export const jsx = (...args) => internalJsx(originJsx, ...args);
 // NOTE: jsxs is for static node, react create them by jsxs
 // to improve performance
@@ -29,10 +28,6 @@ const internalJsx = (jsx, type, props, ...args) => {
   }
   return jsx(type, props, ...args);
 };
-
-export const jsx = (...args) => internalJsx(originJsx, ...args);
-
-export const jsxs = (...args) => internalJsx(originJsxs, ...args);
 
 export const Fragment = jsxRuntime.Fragment;
 

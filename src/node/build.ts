@@ -47,7 +47,7 @@ export async function bundle(root: string, config: SiteConfig) {
     },
   });
   // const spinner = ora();
-  // spinner.start(`Building client + server bundles...`);
+  // spinner.start(`Building client  server bundles...`);
 
   try {
     const [clientBundle, serverBundle] = await Promise.all([
@@ -147,7 +147,14 @@ export async function renderPages(
     routes.map(async (route) => {
       const routePath = route.path;
       const { appHtml, islandToPathMap, propsData } = await render(routePath);
+      const styleAssets = clientBundle.output.filter(
+        (chunk) => chunk.type === "asset" && chunk.fileName.endsWith(".css"),
+      );
+      const islandBundle = await buildIslands(root, islandToPathMap);
+      const islandsCode = (islandBundle as RollupOutput).output[0].code;
       await buildIslands(root, islandToPathMap);
+      const normalizeVendorFilename = (fileName: string) =>
+        fileName.replace(/\//g, "_") + ".js";
       const html = `
 <!DOCTYPE html>
 <html>
@@ -156,17 +163,32 @@ export async function renderPages(
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>title</title>
     <meta name="description" content="xxx">
+        ${styleAssets
+          .map((item) => `<link rel="stylesheet" href="/${item.fileName}">`)
+          .join("\n")}
+          <script type="importmap">
+          {
+            "imports": {
+              ${EXTERNALS.map(
+                (name) => `"${name}": "/${normalizeVendorFilename(name)}"`,
+              ).join(",")}
+            }
+          }
+        </script>
   </head>
   <body>
     <div id="root">${appHtml}</div>
+       <script type="module">${islandsCode}</script>
     <script type="module" src="/${clientChunk?.fileName}"></script>
+      <script id="island-props">${JSON.stringify(propsData)}</script>
+
   </body>
 </html>`.trim();
       const fileName = routePath.endsWith("/")
         ? `${routePath}index.html`
         : `${routePath}.html`;
-      await fs.ensureDir(join(root, "build", dirname(fileName)));
-      await fs.writeFile(join(root, "build", fileName), html);
+      await fs.ensureDir(join(root, CLIENT_OUTPUT, dirname(fileName)));
+      await fs.writeFile(join(root, CLIENT_OUTPUT, fileName), html);
     }),
   );
 }

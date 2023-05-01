@@ -3,7 +3,7 @@ import { SiteConfig } from "shared/types/index";
 import { join, relative } from "path";
 import { PACKAGE_ROOT } from "node/constants";
 import sirv from "sirv";
-
+import fs from "fs-extra";
 const SITE_DATA_ID = "island:site-data";
 
 export function pluginConfig(
@@ -41,7 +41,9 @@ export function pluginConfig(
     },
     configureServer(server) {
       const publicDir = join(config.root, "public");
-      server.middlewares.use(sirv(publicDir));
+      if (fs.existsSync(publicDir)) {
+        server.middlewares.use(sirv(publicDir));
+      }
     },
     async handleHotUpdate(ctx) {
       const customWatchedFiles = [config.configPath];
