@@ -7,7 +7,10 @@ import { HelmetProvider } from "react-helmet-async";
 // For ssr component render
 export async function render(pagePath: string, helmetContext: object) {
   const pageData = await initPageData(pagePath);
-  return renderToString(
+  const { clearIslandData, data } = await import("./jsx-runtime");
+  const { islandProps, islandToPathMap } = data;
+  clearIslandData();
+  const appHtml = renderToString(
     <HelmetProvider context={helmetContext}>
       <DataContext.Provider value={pageData}>
         <StaticRouter location={pagePath}>
@@ -16,6 +19,11 @@ export async function render(pagePath: string, helmetContext: object) {
       </DataContext.Provider>
     </HelmetProvider>,
   );
+  return {
+    appHtml,
+    islandProps,
+    islandToPathMap,
+  };
 }
 
 export { routes } from "island:routes";

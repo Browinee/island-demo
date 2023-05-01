@@ -6,6 +6,9 @@ import { SiteConfig } from "shared/types";
 import { createPluginMdx } from "./plugin-mdx";
 import pluginUnocss from "unocss/vite";
 import unocssOptions from "./unocssOptions";
+import { PACKAGE_ROOT } from "./constants";
+import path from "path";
+import babelPluginIsland from "./babel-plugin-island";
 
 export async function createVitePlugins(
   config: SiteConfig,
@@ -16,7 +19,17 @@ export async function createVitePlugins(
     pluginUnocss(unocssOptions),
     pluginIndexHtml(),
     pluginReact({
+      // NOTE: classic =>
+      // 1. use React.createElement(xxx)
+      // 2.need to import React from "react" manually
+      //
       jsxRuntime: "automatic",
+      jsxImportSource: isSSR
+        ? path.join(PACKAGE_ROOT, "src", "runtime")
+        : "react",
+      babel: {
+        plugins: [babelPluginIsland],
+      },
     }),
     pluginConfig(config, restartServer),
     pluginRoutes({
